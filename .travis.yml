@@ -1,0 +1,18 @@
+language: java
+
+script: "[ ${TRAVIS_PULL_REQUEST} = 'false' ] && mvn clean deploy --settings target/travis/settings.xml || mvn clean verify --settings target/travis/settings.xml"
+
+branches:
+  except:
+    - travis
+    
+jdk:
+  - oraclejdk8
+  
+env:
+  global:
+    - secure: "riBsUgkYG/2xIzVDXdCbpzeyPjKHzW48VHaQpT4X7hciDhqPPsYlsTelR1g0tscSLxL/gqplcCDf6g12IYE6TCUIQSqOtAuPBLNjthTFh7BYwyEfp3XPWGS0Q3h2+Je5XkivSr+kZocO0CzYmXQgsjhrqXuZvsy2p7rkC1CBtD1NSXr8WWV/sy91AKinyyOcc5D6fo8Up+zkYAtLcY6vDLnuQjYg7j7Xnw6EHjMSAO8jF88rYJ3P3V8MaOcT5UqTowZ12BCXvcunHARy4MViCXWt78Fy5wlajCxXE0/CCDOUeCGuJ2IzjBXNWUO3lz8CklIqWIJwO0ybWjMosjO9YRr7bxB4HUah1gSbvLDClnRB5jJHuhvrvDjH5fQDvglTaNfk8GDhCKusGlg5dfvsFKYt8sl0I8RKbwdTr1mQksOrrA9r1Uv2YIK7G56qK3Ve4IpfTfTWhZ4h9MV8qOhy1gM6pjIdYbrNHQ+DVj6kNGuR3hAWrgImW4165d7s3DQnO1Z8aCF1qIWvmBTDGo7ECjkg3PuC7jdc3mRYkb8pAX7Oxjpr9SO9hWgbuzK5PeATrLzqKcS3kA3DO7r6GQJpzNv+owuj2Gfyx+tPOe0gMFVApZnA/y7/wkERuBwX4ap7KIUYxfy6IDk0gLbaxENSfRxwJnd477vldavwv/X/HRQ="
+    - secure: "fTWamwN6F3JMuY1IUBLzTdRWg71b8eDxXY2RioGczKJJVHyCBoq54D2BQcysaMp4cx72xSCbkSwIH5u8Eu6HFISyyzlGzy++F0X4BqTji1xO/eMykbo2QvWMyn60y0DtICecLRhYE/RRF5+GDyqvMG9Nuai0KbpZuxj0j200v9VlVqbNR1Ha/ApjCBvhb6h+ovtlk7/jRJyu9fdMd9fb5B/lzcrP6OaPFlAL/axDnMwQj5wEKQyqCnAc1XFaryMozkXTKfHykXuAYJ/xqcCc2hR1FUh6pKbEtEwDv6tUUS10zjbnTL+OTuaifIy5tGHD+g7I3F6EJ1FfHEXJ/5BT0dWjCVQqyH05Ovk4m8VQdym/GOxYMr6IVphV3LLnSMap2a1mu5cRNFtdbVhp8pztlcvuQZe9tdXZNUd63C4Ba41AaxOi8lI8w6jfHI0uFtPv83EjnlpVErxmRkCoQTJ6I/YOzcnBUTILzrm6Kqw6r0kVpYLKDvGseRxc/v2pp2yXuIsDVILJOr4KPAv+IYqIiziivz+offp6oijjgeuWglCC9JQU0EzoCXGAxV4Qtj5u4a2g9ZKFNToQ/3WmPG2otaloga2nAaJ6WdS9I6XrQn9GXT9muNvFoILNDK8EkoFqmts2XKzdnEnvW/P4q3P/svjIWwNSJs7ecS4Ro3YX05o="
+
+before_install: git clone -b travis `git config --get remote.origin.url` target/travis
+
